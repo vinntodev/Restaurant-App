@@ -1,365 +1,119 @@
-## About the Application
-Restaurant Management System is a console-based application designed to facilitate restaurant menu management, customer order recording, automatic discounted payment calculation, and data storage to files.
+# Sistem Manajemen Restoran
 
-## Abstraction using Abstract Class and Sealed Class
-Inheritance with structured class hierarchy
-Encapsulation through access modifiers and getter/setter methods
-Polymorphism with method overriding and runtime polymorphism
-Exception Handling for robust error management
-File I/O for persistent data storage
-Collection Framework (ArrayList) for data management
-Modern Java 25 features (Pattern Matching, Switch Expressions, Text Blocks, etc.)
+Aplikasi konsol berbasis Java untuk mengelola menu restoran dan memproses pesanan pelanggan. Aplikasi ini menyediakan fitur lengkap untuk menambah item menu, menerima pesanan, menghitung total biaya, dan menyimpan struk pesanan.
 
-## Key Features
-1. Menu Management
+## 📋 Fitur
 
-Add new menu items (Food, Beverages, or Discount Items)
-Display complete menu list with organized formatting
-Save menu to menu_restoran.txt file
-Load menu from file when application starts
+- ✅ **Manajemen Menu**
+  - Tambah item menu baru (Makanan, Minuman, atau Item dengan Diskon)
+  - Tampilkan daftar menu restoran
+  - Simpan menu ke file
 
-2. Order Recording
+- ✅ **Manajemen Pesanan**
+  - Terima pesanan dari pelanggan
+  - Hitung total biaya pesanan
+  - Tampilkan struk pesanan
+  - Simpan struk ke file dengan timestamp
 
-Record customer orders with name and timestamp
-Add multiple items to a single order
-Input validation with exception handling
+- ✅ **Tipe Item Menu**
+  - **Makanan**: Item makanan dengan kategori (Nusantara, Western, Chinese, dll)
+  - **Minuman**: Item minuman dengan kategori (Dingin, Panas, Segar, dll)
+  - **Diskon**: Item dengan persentase diskon otomatis
 
-3. Automatic Calculation
+## 🛠️ Teknologi
 
-Calculate total payment accurately
-Automatic discount for items in "Discount" category
-Display detailed calculations in receipt
+- **Java** (menggunakan fitur Java modern seperti enhanced switch expressions dan text blocks)
+- **Java Collections** (ArrayList)
+- **Java I/O** (FileWriter, BufferedWriter)
+- **Java Time API** (untuk timestamp pada struk)
 
-4. Receipt Generation
+## 📦 Persyaratan
 
-Professional format order receipt
-Item details, prices, and discounts
-Order timestamp
-Total payment
+- Java Development Kit (JDK) 17 atau lebih tinggi
+- Terminal/Command Prompt untuk menjalankan aplikasi
 
-5. File Operations
+## 🚀 Cara Menjalankan
 
-Save menu to text file
-Load menu from file
-Export order receipt to file with unique name (timestamp)
+### 1. Kompilasi Program
 
-## OOP Concepts Implementation
-1. Abstraction
-javapublic abstract sealed class MenuItem permits Makanan, Minuman, Diskon {
-    // Abstract methods that must be implemented
-    public abstract void tampilMenu();
-    public abstract String toFileString();
-}
-Implementation:
+```bash
+javac RestoranApp.java
+```
 
-Abstract class MenuItem as blueprint
-Abstract methods that must be implemented by subclasses
-Sealed class to restrict inheritance
+### 2. Jalankan Aplikasi
 
-2. Inheritance
-           MenuItem (Abstract)
-                 |
-     +-----------+-----------+
-     |           |           |
-  Makanan    Minuman     Diskon
-  (Food)   (Beverage)  (Discount)
-Implementation:
+```bash
+java RestoranApp
+```
 
-Makanan, Minuman, and Diskon extend MenuItem
-Inherit attributes: name, price, category
-Add specific attributes in each subclass
+## 📖 Cara Penggunaan
 
-3. Encapsulation
-javaprivate String nama;      // Private attribute
-private double harga;
+Setelah aplikasi dijalankan, Anda akan melihat menu utama dengan 8 pilihan:
 
-public String nama() {    // Public getter
-    return nama;
-}
+1. **Tambahkan Item Baru ke Menu**
+   - Pilih tipe item (Makanan/Minuman/Item dengan Diskon)
+   - Masukkan nama, harga, dan informasi tambahan sesuai tipe
 
-public void setNama(String nama) {  // Public setter
-    this.nama = nama;
-}
-Implementation:
+2. **Tampilkan Menu Restoran**
+   - Menampilkan semua item menu yang tersedia
 
-All attributes use private modifier
-Data access through public getters and setters
-Data protection and validation
+3. **Menerima Pesanan Pelanggan**
+   - Masukkan nama pelanggan
+   - Pilih item dari menu dengan memasukkan nomor
+   - Masukkan 0 untuk menyelesaikan pesanan
 
-4. Polymorphism
-java// Runtime Polymorphism
-for (MenuItem item : daftarMenu) {
-    item.tampilMenu();  // Calls different method depending on object type
-}
-Implementation:
+4. **Hitung Total Biaya Pesanan**
+   - Menampilkan total biaya dari pesanan yang sedang dibuat
 
-Method overriding in each subclass
-Runtime polymorphism in collections
-Polymorphic behavior for discount price calculation
+5. **Tampilkan Struk Pesanan**
+   - Menampilkan detail lengkap pesanan dalam format struk
 
-Project Structure
-restaurant-management-system/
-|
-+-- src/
-|   +-- MenuItem.java          # Abstract parent class (sealed)
-|   +-- Makanan.java           # Subclass for food items
-|   +-- Minuman.java           # Subclass for beverage items
-|   +-- Diskon.java            # Subclass for discount items
-|   +-- Menu.java              # Menu list manager class
-|   +-- Pesanan.java           # Customer order manager class
-|   +-- RestoranApp.java       # Main class (entry point)
-|
-+-- data/
-|   +-- menu_restoran.txt      # Menu storage file (auto-generated)
-|   +-- struk_*.txt            # Order receipt files (auto-generated)
-|
-+-- docs/
-|   +-- Detailed_Explanation.md
-|
-+-- README.md
-+-- LICENSE
-Installation
-Prerequisites
+6. **Simpan Menu ke File**
+   - Menyimpan daftar menu ke file `menu.txt`
 
-Java Development Kit (JDK) 17 or higher (recommended: JDK 25)
-Text editor or IDE (VS Code, IntelliJ IDEA, Eclipse, NetBeans, etc.)
-Terminal/Command Prompt
+7. **Simpan Struk Pesanan ke File**
+   - Menyimpan struk ke file dengan format `struk_YYYYMMDD_HHMMSS.txt`
+   - Pesanan akan di-reset setelah disimpan
 
-Installation Steps
+8. **Keluar**
+   - Keluar dari aplikasi
 
-Clone the repository
+## 📁 Struktur Proyek
 
-bashgit clone https://github.com/username/restaurant-management-system.git
-cd restaurant-management-system
+```
+AppRestoran/
+├── RestoranApp.java    # File utama aplikasi
+└── Readme.md           # Dokumentasi proyek
+```
 
-Compile all Java files
+## 🏗️ Struktur Kelas
 
-bashjavac *.java
-Or if in src folder:
-bashcd src
-javac *.java
+Aplikasi ini menggunakan nested classes dalam `RestoranApp`:
 
-Run the application
+- **MenuItem** (abstract): Kelas dasar untuk semua item menu
+- **Makanan**: Kelas untuk item makanan
+- **Minuman**: Kelas untuk item minuman
+- **Diskon**: Kelas untuk item dengan diskon
+- **Menu**: Kelas untuk mengelola daftar menu
+- **Pesanan**: Kelas untuk mengelola pesanan pelanggan
 
-bashjava RestoranApp
-Usage Guide
-Main Menu
-After the application runs, you will see the main menu with 8 options:
-======================================================================
-                           MAIN MENU
-======================================================================
-  1. Add New Item to Menu
-  2. Display Restaurant Menu
-  3. Take Customer Order
-  4. Calculate Total Order Cost
-  5. Display Order Receipt
-  6. Save Menu to File
-  7. Save Order Receipt to File
-  8. Exit
-======================================================================
-1. Add New Menu Item
-Select menu [1-8]: 1
+## 📝 Catatan
 
-Item name: Beef Rendang
-Price: Rp 30000
+- Menu default akan dimuat saat pertama kali aplikasi dijalankan jika file menu tidak ditemukan
+- Menu default berisi:
+  - Nasi Goreng (Rp 25.000)
+  - Es Teh (Rp 8.000)
+  - Ayam Bakar Promo dengan diskon 10% (Rp 40.000)
 
-Select item type:
-1. Food
-2. Beverage
-3. Discount Item
-Choice: 1
+## 👨‍💻 Pengembang
 
-Food type (Nusantara/Western/Chinese/etc): Nusantara
+Dikembangkan sebagai proyek pembelajaran Java dengan fokus pada:
+- Object-Oriented Programming (OOP)
+- Exception Handling
+- File I/O Operations
+- Java Collections Framework
 
-✓ Item successfully added to menu!
-2. Display Menu
-Select menu [1-8]: 2
+---
 
-==================================================================================
-                               RESTAURANT MENU LIST
-==================================================================================
-1. Nasi Goreng            | Rp 15000     | Type: Nusantara      | Category: Food
-2. Sate Ayam              | Rp 20000     | Type: Nusantara      | Category: Food
-...
-11. Bakso Spesial         | Rp 12000     | Discount: 10% | Discounted Price: Rp 10800
-==================================================================================
-3. Take Order
-Select menu [1-8]: 3
+**Selamat menggunakan Sistem Manajemen Restoran!** 🍽️
 
-Enter customer name: Budi Santoso
-✓ Order for Budi Santoso has started.
-
-Select menu number to order (0 to finish): 1
-✓ Nasi Goreng added to order!
-
-Select menu number to order (0 to finish): 11
-✓ Bakso Spesial added to order!
-
-Select menu number to order (0 to finish): 0
-✓ Order successfully recorded!
-4. Calculate Total
-Select menu [1-8]: 4
-
-======================================================================
-TOTAL ORDER COST: Rp 25800
-======================================================================
-5. Display Receipt
-Select menu [1-8]: 5
-
-======================================================================
-                         ORDER RECEIPT
-======================================================================
-Customer Name  : Budi Santoso
-Order Time     : 01-12-2024 14:30:45
-----------------------------------------------------------------------
-1. Nasi Goreng                  Rp      15000
-2. Bakso Spesial                Rp      12000
-   (10% Discount)               - Rp       1200
-   Price After Discount         Rp      10800
-----------------------------------------------------------------------
-TOTAL PAYMENT                            Rp      25800
-======================================================================
-            Thank you for your visit!
-======================================================================
-6. Save Menu to File
-Select menu [1-8]: 6
-
-✓ Menu successfully saved to file: menu_restoran.txt
-File format menu_restoran.txt:
-MAKANAN|Nasi Goreng|15000|Nusantara
-MAKANAN|Sate Ayam|20000|Nusantara
-MINUMAN|Es Teh Manis|5000|Dingin
-DISKON|Bakso Spesial|12000|10
-7. Save Receipt to File
-Select menu [1-8]: 7
-
-✓ Receipt successfully saved to file: struk_20241201_143045.txt
-8. Exit
-Select menu [1-8]: 8
-
-✓ Thank you for using the application. Goodbye!
-Screenshots
-Main Menu
-======================================================================
-        WELCOME TO RESTAURANT MANAGEMENT SYSTEM
-======================================================================
-✓ Menu successfully loaded from file: menu_restoran.txt
-
-======================================================================
-                           MAIN MENU
-======================================================================
-  1. Add New Item to Menu
-  2. Display Restaurant Menu
-  ...
-Menu List with Polymorphism
-1. Nasi Goreng            | Rp 15000     | Type: Nusantara      | Category: Food
-2. Es Teh Manis           | Rp 5000      | Type: Cold           | Category: Beverage
-3. Bakso Spesial          | Rp 12000     | Discount: 10% | Discounted Price: Rp 10800
-Note: Each item type (Food/Beverage/Discount) displays with different format - this is Polymorphism in action!
-Order Receipt with Discount Details
-======================================================================
-                         ORDER RECEIPT
-======================================================================
-Customer Name  : Budi Santoso
-Order Time     : 01-12-2024 14:30:45
-----------------------------------------------------------------------
-1. Nasi Goreng                  Rp      15000
-2. Bakso Spesial                Rp      12000
-   (10% Discount)               - Rp       1200
-   Price After Discount         Rp      10800
-3. Es Teh Manis                 Rp       5000
-----------------------------------------------------------------------
-TOTAL PAYMENT                            Rp      30800
-======================================================================
-Technologies Used
-Core Technologies
-
-Java 25 - Programming Language
-Java NIO (Files API) - Modern File I/O Operations
-Java Collections Framework - ArrayList for data management
-Java Time API - LocalDateTime for timestamps
-
-Java 25 Modern Features
-
-Sealed Classes - Type-safe inheritance control
-Pattern Matching for instanceof - Cleaner type checking
-Switch Expressions - Modern switch syntax
-Text Blocks - Multi-line string literals
-Local Variable Type Inference (var) - Type inference
-Stream API - Functional programming
-Records (Optional) - Immutable data carriers
-
-Design Patterns
-
-Template Method Pattern - Abstract class with abstract methods
-Factory Pattern - Creation of MenuItem objects
-Composition - Menu has-a ArrayList of MenuItem
-
-System Requirements
-Minimum Requirements
-
-OS: Windows 7/8/10/11, macOS 10.12+, Linux (Ubuntu 18.04+)
-Java: JDK 17 or higher
-RAM: 256 MB
-Storage: 50 MB free space
-
-Recommended Requirements
-
-OS: Windows 10/11, macOS 12+, Linux (Ubuntu 22.04+)
-Java: JDK 25
-RAM: 512 MB
-Storage: 100 MB free space
-IDE: IntelliJ IDEA, VS Code, or Eclipse
-
-Documentation
-Class Diagram
-+-------------------------------------+
-|      MenuItem (Abstract Sealed)     |
-+-------------------------------------+
-| - nama: String                      |
-| - harga: double                     |
-| - kategori: String                  |
-+-------------------------------------+
-| + nama(): String                    |
-| + harga(): double                   |
-| + setNama(String): void             |
-| + setHarga(double): void            |
-| + tampilMenu(): void [abstract]     |
-| + toFileString(): String [abstract] |
-| + hargaAkhir(): double              |
-+--------------+----------------------+
-               |
-     +---------+---------+
-     |         |         |
-+----v-----+ +-v--------+ +v------------+
-| Makanan  | | Minuman  | |   Diskon    |
-| (Food)   | |(Beverage)| | (Discount)  |
-+----------+ +----------+ +-------------+
-|- jenis   | |- jenis   | |- persenDiskon
-|  Makanan | |  Minuman | |             |
-+----------+ +----------+ +-------------+
-
-+-----------------+         +------------------+
-|      Menu       |         |     Pesanan      |
-|                 |         |     (Order)      |
-+-----------------+         +------------------+
-|- daftarMenu:    |         |- itemPesanan:    |
-|  ArrayList      |         |  ArrayList       |
-+-----------------+         |- namaPelanggan   |
-|+ tambahItem()   |         |- waktuPesan      |
-|+ getItem()      |         +------------------+
-|+ tampilkanMenu()|         |+ tambahItem()    |
-|+ simpanKeFile() |         |+ hitungTotal()   |
-|+ muatDariFile() |         |+ tampilkanStruk()|
-+-----------------+         |+ simpanKeFile()  |
-                            +------------------+
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-MIT License
-
-Copyright (c) 2025 Vinto Rizalfi
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
