@@ -1,20 +1,16 @@
-🎯 About the Application
+## About the Application
 Restaurant Management System is a console-based application designed to facilitate restaurant menu management, customer order recording, automatic discounted payment calculation, and data storage to files.
 
-🎓 Learning Outcomes
-This application successfully implements:
+## Abstraction using Abstract Class and Sealed Class
+Inheritance with structured class hierarchy
+Encapsulation through access modifiers and getter/setter methods
+Polymorphism with method overriding and runtime polymorphism
+Exception Handling for robust error management
+File I/O for persistent data storage
+Collection Framework (ArrayList) for data management
+Modern Java 25 features (Pattern Matching, Switch Expressions, Text Blocks, etc.)
 
-✅ Abstraction using Abstract Class and Sealed Class
-✅ Inheritance with structured class hierarchy
-✅ Encapsulation through access modifiers and getter/setter methods
-✅ Polymorphism with method overriding and runtime polymorphism
-✅ Exception Handling for robust error management
-✅ File I/O for persistent data storage
-✅ Collection Framework (ArrayList) for data management
-✅ Modern Java 25 features (Pattern Matching, Switch Expressions, Text Blocks, etc.)
-
-
-✨ Key Features
+## Key Features
 1. Menu Management
 
 Add new menu items (Food, Beverages, or Discount Items)
@@ -47,7 +43,7 @@ Save menu to text file
 Load menu from file
 Export order receipt to file with unique name (timestamp)
 
-🏗️ OOP Concepts Implementation
+## OOP Concepts Implementation
 1. Abstraction
 javapublic abstract sealed class MenuItem permits Makanan, Minuman, Diskon {
     // Abstract methods that must be implemented
@@ -63,7 +59,7 @@ Sealed class to restrict inheritance
 2. Inheritance
            MenuItem (Abstract)
                  |
-     ┌───────────┼───────────┐
+     +-----------+-----------+
      |           |           |
   Makanan    Minuman     Diskon
   (Food)   (Beverage)  (Discount)
@@ -101,30 +97,28 @@ Method overriding in each subclass
 Runtime polymorphism in collections
 Polymorphic behavior for discount price calculation
 
-
-📁 Project Structure
+Project Structure
 restaurant-management-system/
-│
-├── src/
-│   ├── MenuItem.java          # Abstract parent class (sealed)
-│   ├── Makanan.java           # Subclass for food items
-│   ├── Minuman.java           # Subclass for beverage items
-│   ├── Diskon.java            # Subclass for discount items
-│   ├── Menu.java              # Menu list manager class
-│   ├── Pesanan.java           # Customer order manager class
-│   └── RestoranApp.java       # Main class (entry point)
-│
-├── data/
-│   ├── menu_restoran.txt      # Menu storage file (auto-generated)
-│   └── struk_*.txt            # Order receipt files (auto-generated)
-│
-├── docs/
-│   └── Detailed_Explanation.md  # Detailed documentation for presentation
-│
-├── README.md                  # This file
-└── LICENSE                    # MIT License
-
-🚀 Installation
+|
++-- src/
+|   +-- MenuItem.java          # Abstract parent class (sealed)
+|   +-- Makanan.java           # Subclass for food items
+|   +-- Minuman.java           # Subclass for beverage items
+|   +-- Diskon.java            # Subclass for discount items
+|   +-- Menu.java              # Menu list manager class
+|   +-- Pesanan.java           # Customer order manager class
+|   +-- RestoranApp.java       # Main class (entry point)
+|
++-- data/
+|   +-- menu_restoran.txt      # Menu storage file (auto-generated)
+|   +-- struk_*.txt            # Order receipt files (auto-generated)
+|
++-- docs/
+|   +-- Detailed_Explanation.md
+|
++-- README.md
++-- LICENSE
+Installation
 Prerequisites
 
 Java Development Kit (JDK) 17 or higher (recommended: JDK 25)
@@ -135,21 +129,20 @@ Installation Steps
 
 Clone the repository
 
-bash   git clone https://github.com/username/restaurant-management-system.git
-   cd restaurant-management-system
+bashgit clone https://github.com/username/restaurant-management-system.git
+cd restaurant-management-system
 
 Compile all Java files
 
-bash   javac *.java
+bashjavac *.java
 Or if in src folder:
-bash   cd src
-   javac *.java
+bashcd src
+javac *.java
 
 Run the application
 
-bash   java RestoranApp
-
-📖 Usage Guide
+bashjava RestoranApp
+Usage Guide
 Main Menu
 After the application runs, you will see the main menu with 8 options:
 ======================================================================
@@ -164,7 +157,7 @@ After the application runs, you will see the main menu with 8 options:
   7. Save Order Receipt to File
   8. Exit
 ======================================================================
-1️⃣ Add New Menu Item
+1. Add New Menu Item
 Select menu [1-8]: 1
 
 Item name: Beef Rendang
@@ -179,18 +172,18 @@ Choice: 1
 Food type (Nusantara/Western/Chinese/etc): Nusantara
 
 ✓ Item successfully added to menu!
-2️⃣ Display Menu
+2. Display Menu
 Select menu [1-8]: 2
 
-======================================================================================
+==================================================================================
                                RESTAURANT MENU LIST
-======================================================================================
+==================================================================================
 1. Nasi Goreng            | Rp 15000     | Type: Nusantara      | Category: Food
 2. Sate Ayam              | Rp 20000     | Type: Nusantara      | Category: Food
 ...
 11. Bakso Spesial         | Rp 12000     | Discount: 10% | Discounted Price: Rp 10800
-======================================================================================
-3️⃣ Take Order
+==================================================================================
+3. Take Order
 Select menu [1-8]: 3
 
 Enter customer name: Budi Santoso
@@ -204,13 +197,13 @@ Select menu number to order (0 to finish): 11
 
 Select menu number to order (0 to finish): 0
 ✓ Order successfully recorded!
-4️⃣ Calculate Total
+4. Calculate Total
 Select menu [1-8]: 4
 
 ======================================================================
 TOTAL ORDER COST: Rp 25800
 ======================================================================
-5️⃣ Display Receipt
+5. Display Receipt
 Select menu [1-8]: 5
 
 ======================================================================
@@ -228,7 +221,7 @@ TOTAL PAYMENT                            Rp      25800
 ======================================================================
             Thank you for your visit!
 ======================================================================
-6️⃣ Save Menu to File
+6. Save Menu to File
 Select menu [1-8]: 6
 
 ✓ Menu successfully saved to file: menu_restoran.txt
@@ -237,16 +230,15 @@ MAKANAN|Nasi Goreng|15000|Nusantara
 MAKANAN|Sate Ayam|20000|Nusantara
 MINUMAN|Es Teh Manis|5000|Dingin
 DISKON|Bakso Spesial|12000|10
-7️⃣ Save Receipt to File
+7. Save Receipt to File
 Select menu [1-8]: 7
 
 ✓ Receipt successfully saved to file: struk_20241201_143045.txt
-8️⃣ Exit
+8. Exit
 Select menu [1-8]: 8
 
 ✓ Thank you for using the application. Goodbye!
-
-📸 Screenshots
+Screenshots
 Main Menu
 ======================================================================
         WELCOME TO RESTAURANT MANAGEMENT SYSTEM
@@ -279,8 +271,7 @@ Order Time     : 01-12-2024 14:30:45
 ----------------------------------------------------------------------
 TOTAL PAYMENT                            Rp      30800
 ======================================================================
-
-🛠️ Technologies Used
+Technologies Used
 Core Technologies
 
 Java 25 - Programming Language
@@ -290,13 +281,13 @@ Java Time API - LocalDateTime for timestamps
 
 Java 25 Modern Features
 
-✅ Sealed Classes - Type-safe inheritance control
-✅ Pattern Matching for instanceof - Cleaner type checking
-✅ Switch Expressions - Modern switch syntax
-✅ Text Blocks - Multi-line string literals
-✅ Local Variable Type Inference (var) - Type inference
-✅ Stream API - Functional programming
-✅ Records (Optional) - Immutable data carriers
+Sealed Classes - Type-safe inheritance control
+Pattern Matching for instanceof - Cleaner type checking
+Switch Expressions - Modern switch syntax
+Text Blocks - Multi-line string literals
+Local Variable Type Inference (var) - Type inference
+Stream API - Functional programming
+Records (Optional) - Immutable data carriers
 
 Design Patterns
 
@@ -304,8 +295,7 @@ Template Method Pattern - Abstract class with abstract methods
 Factory Pattern - Creation of MenuItem objects
 Composition - Menu has-a ArrayList of MenuItem
 
-
-💻 System Requirements
+System Requirements
 Minimum Requirements
 
 OS: Windows 7/8/10/11, macOS 10.12+, Linux (Ubuntu 18.04+)
@@ -321,74 +311,50 @@ RAM: 512 MB
 Storage: 100 MB free space
 IDE: IntelliJ IDEA, VS Code, or Eclipse
 
-
-📚 Documentation
+Documentation
 Class Diagram
-┌─────────────────────────────────────┐
-│      MenuItem (Abstract Sealed)     │
-├─────────────────────────────────────┤
-│ - nama: String                      │
-│ - harga: double                     │
-│ - kategori: String                  │
-├─────────────────────────────────────┤
-│ + nama(): String                    │
-│ + harga(): double                   │
-│ + setNama(String): void             │
-│ + setHarga(double): void            │
-│ + tampilMenu(): void [abstract]     │
-│ + toFileString(): String [abstract] │
-│ + hargaAkhir(): double              │
-└──────────────┬──────────────────────┘
-               │
-     ┌─────────┼─────────┐
-     │         │         │
-┌────▼─────┐┌─▼────────┐┌▼────────────┐
-│ Makanan  ││ Minuman  ││   Diskon    │
-│ (Food)   ││(Beverage)││ (Discount)  │
-├──────────┤├──────────┤├─────────────┤
-│- jenis   ││- jenis   ││- persenDiskon
-│  Makanan ││  Minuman ││             │
-└──────────┘└──────────┘└─────────────┘
++-------------------------------------+
+|      MenuItem (Abstract Sealed)     |
++-------------------------------------+
+| - nama: String                      |
+| - harga: double                     |
+| - kategori: String                  |
++-------------------------------------+
+| + nama(): String                    |
+| + harga(): double                   |
+| + setNama(String): void             |
+| + setHarga(double): void            |
+| + tampilMenu(): void [abstract]     |
+| + toFileString(): String [abstract] |
+| + hargaAkhir(): double              |
++--------------+----------------------+
+               |
+     +---------+---------+
+     |         |         |
++----v-----+ +-v--------+ +v------------+
+| Makanan  | | Minuman  | |   Diskon    |
+| (Food)   | |(Beverage)| | (Discount)  |
++----------+ +----------+ +-------------+
+|- jenis   | |- jenis   | |- persenDiskon
+|  Makanan | |  Minuman | |             |
++----------+ +----------+ +-------------+
 
-┌─────────────────┐         ┌──────────────────┐
-│      Menu       │         │     Pesanan      │
-│                 │         │     (Order)      │
-├─────────────────┤         ├──────────────────┤
-│- daftarMenu:    │         │- itemPesanan:    │
-│  ArrayList      │         │  ArrayList       │
-├─────────────────┤         │- namaPelanggan   │
-│+ tambahItem()   │         │- waktuPesan      │
-│+ getItem()      │         ├──────────────────┤
-│+ tampilkanMenu()│         │+ tambahItem()    │
-│+ simpanKeFile() │         │+ hitungTotal()   │
-│+ muatDariFile() │         │+ tampilkanStruk()│
-└─────────────────┘         │+ simpanKeFile()  │
-                            └──────────────────┘
-Detailed Documentation
-For detailed explanations about OOP implementation and Java 25 features, please read:
++-----------------+         +------------------+
+|      Menu       |         |     Pesanan      |
+|                 |         |     (Order)      |
++-----------------+         +------------------+
+|- daftarMenu:    |         |- itemPesanan:    |
+|  ArrayList      |         |  ArrayList       |
++-----------------+         |- namaPelanggan   |
+|+ tambahItem()   |         |- waktuPesan      |
+|+ getItem()      |         +------------------+
+|+ tampilkanMenu()|         |+ tambahItem()    |
+|+ simpanKeFile() |         |+ hitungTotal()   |
+|+ muatDariFile() |         |+ tampilkanStruk()|
++-----------------+         |+ simpanKeFile()  |
+                            +------------------+
 
-Detailed Explanation (Indonesian)
-15-Minute Presentation Script
-
-
-🤝 Contributing
-Contributions are welcome! If you'd like to contribute:
-
-Fork this repository
-Create a new feature branch (git checkout -b amazing-feature)
-Commit your changes (git commit -m 'Add amazing feature')
-Push to the branch (git push origin amazing-feature)
-Create a Pull Request
-
-Contribution Guidelines
-
-Follow existing code style
-Write comments for complex code
-Update README if adding new features
-Test all features before submitting PR
-
-
-📄 License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 MIT License
 
